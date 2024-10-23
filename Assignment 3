@@ -1,1 +1,101 @@
-
+#Q1
+Q = float(input("Enter the value of Discharge: "))
+T = int(input("Enter the value of top width: "))
+g = float(input("Enter the value of acceleration due to gravity: "))
+y1 = float(input("Enter the value of upstream depth: "))
+Z = float(input("Enter the value of hump: "))
+# Discharge per meter width
+q = Q / T
+print("The value of discharge per meter width is:", q)
+# Area calculation
+A1 = T * y1
+print("Value of upstream area is:", A1)
+# Froude number calculation
+Fr1 = ((Q * Q * T) / (g * A1 * A1 * A1)) ** 0.5
+print("The value of Froude number is:", Fr1)
+if Fr1 > 1:
+print("The flow is supercritical flow")
+else:
+print("The flow is subcritical flow")
+# Upstream Energy
+E1 = y1 + ((Q * Q) / (2 * g * A1 * A1))
+print("The value of energy at the initial section is:", E1)
+# Downstream energy
+E2 = E1 - Z
+print("The value of downstream energy E2 is:", E2)
+# Critical Depth
+yc = (q * q / g) ** 0.3333
+print("The value of critical depth is:", yc)
+Ec = 1.5 * yc
+print("The value of critical energy is:", Ec)
+if Ec > E2:
+print("Choking Condition")
+else:
+print("SAFE")
+# Calculation of Zmax
+Zmax = E1 - Ec
+print("The value of maximum hump is:", Zmax)
+#Q2 To find the downstream depth of open channel
+Q = float(input("Enter the value of discharge: "))
+B1 = float(input("Enter the value of width at upstream: "))
+B2 = float(input("Enter the value of downstream: "))
+g = float(input("Enter the value of acceleration due to gravity: "))
+y1 = float(input("Enter the value of upstream depth: "))
+# Discharge per meter width
+q1 = Q / B1
+q2 = Q / B2
+print("The value of discharge per meter width is:", q1)
+print("The value of discharge per meter width is:", q2)
+# Area calculation
+A1 = B1 * y1
+print("The value of upstream is:", A1)
+# Calculation of Froude number
+Fr1 = ((Q * Q * B1) / (g * A1 * A1 * A1)) ** 0.5
+print("The value of Froude number is:", Fr1)
+if Fr1 > 1:
+print("The flow is supercritical flow")
+else:
+print("The flow is subcritical flow")
+# Upstream energy
+E1 = y1 + ((Q * Q) / (2 * g * A1 * A1))
+print("The value of energy at the initial section is:",E1)
+# Calculation of minimum width to avoid choking
+B2min = ((27 * Q * Q) / (8 * g * E1 * E1 * E1)) ** 0.5
+print("The value of minimum width to be kept to avoid choking is:", B2min)
+if B2min > B2:
+print("Choking condition")
+else:
+print("SAFE")
+# Critical depth
+yc = ((Q * Q) / (B2 * 82 * g)) ** 0.3333
+print("The value of critical depth is:", yc)
+Ec = 1.5 * yc
+print("The value of critical energy is:", Ec) 
+#Q3
+#Design of Efficient Channel Section
+Q= float(input("Enter the value of Discharge:"))
+n=float(input("Enter the value of Rugosity coefficient:"))
+So= float (input("Enter the value of bed slope:"))
+g= float(input("Enter the value of acceleration due to Gravity:"))
+#Manning's Formula
+#Q = (AR^2/3 S^1/2)/n
+yn=((Q*n*50*1.591)/(1.732))**(3/8)
+print("The Value of yn is", yn)
+#To encounter the effect of free board
+yn1= 1.1*yn
+print("The Value of ynl is", yn1)
+# Cross Sectional Area
+A = 1.732*yn*yn1
+print("The cross sectional Area is:", A)
+# Top Width
+T= 4*yn/1.732
+print("The value of top Width is:", T)
+# Bottom Width
+B=2*yn/1.732
+print("The value of Bottom Width is'", 8)
+Fr= ((Q*Q*T)/(g*A*A*A)) * 0.5
+print("The value of Froude number is:", Fr)
+if Fr>1:
+print("The flow is Super Critical Flow")
+else:
+0print("The flow is Sub Critical Flow")
